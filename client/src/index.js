@@ -9,6 +9,8 @@ import thunk from 'redux-thunk'
 import App from './App'
 import { reducer } from './reducer/index'
 
+// Redux is used for this application for state management.
+
 const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(

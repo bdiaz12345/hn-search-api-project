@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router'
 
+// JSX styles
+
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -48,6 +50,8 @@ const Result = styled.h4`
     color: white;
 `
 
+// Component
+
 const HistoryScreen = (state) => {
     const data = state.history
 
@@ -69,6 +73,8 @@ const HistoryScreen = (state) => {
         </Wrapper>
     )
 }
+
+// state from reducer
 
 const mapStateToProps = state => {
     console.log(state)

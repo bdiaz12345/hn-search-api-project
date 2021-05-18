@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Particles from 'react-particles-js'
 import { useHistory } from 'react-router'
 
+// JSX styles
+
 const Wrapper = styled.div`
     height: 100vh;
     display: flex;
@@ -40,6 +42,8 @@ const Title = styled.h1`
     text-align: center;
     color: #aa3939;
 `
+
+// Component
 
 const LandingScreen = () => {
     const history = useHistory()

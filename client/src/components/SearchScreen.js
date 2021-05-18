@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import SearchBar from 'material-ui-search-bar'
 import { useHistory } from 'react-router-dom'
 
+// JSX styles
+
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -65,6 +67,8 @@ const HistoryButton = styled.button`
     }
 `
 
+// Component
+
 const SearchScreen = ({addToHistory}) => {
     const [searchValue, setSearchValue] = useState('')
     const [results, setResults] = useState([])
@@ -107,6 +111,8 @@ const SearchScreen = ({addToHistory}) => {
     )
 
 }
+
+// state from reducer
 
 const mapStateToProps = state => {
     console.log(state)
