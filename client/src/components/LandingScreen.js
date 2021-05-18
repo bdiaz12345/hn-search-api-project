@@ -36,11 +36,13 @@ const SubTitle = styled.h6`
     text-align: center;
     font-size: 15px;
     color: #aa3939;
+    font-family: sans-serif;
 `
 
 const Title = styled.h1`
     text-align: center;
     color: #aa3939;
+    font-family: sans-serif;
 `
 
 // Component

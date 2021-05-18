@@ -69,7 +69,7 @@ const HistoryScreen = (state) => {
                         <Result>{result}</Result>
                     </ResultCard>
                 )
-            }) : <h2 style={{color:'white'}}>No search results yet</h2>}
+            }) : <h2 style={{color:'white', fontFamily:'sans-serif'}}>No search results yet</h2>}
         </Wrapper>
     )
 }
