@@ -37,6 +37,7 @@ const BackButton = styled.button`
     padding: .5rem 1rem;
     border: none;
     transition: .25s ease-in-out;
+    background: white;
 
     &:hover {
         cursor: pointer;

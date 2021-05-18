@@ -59,6 +59,7 @@ const HistoryButton = styled.button`
     padding: .5rem 1rem;
     border: none;
     transition: .25s ease-in-out;
+    background: white;
 
     &:hover {
         cursor: pointer;
@@ -82,7 +83,7 @@ const SearchScreen = ({addToHistory}) => {
             value={searchValue} 
             onChange={(e) => {
                 setSearchValue(e)
-            }} 
+            }}
             onRequestSearch={() => {
                 axios
                     .get(`http://hn.algolia.com/api/v1/search?query=${searchValue}`)
