@@ -61,6 +61,9 @@ const HistoryScreen = (state) => {
 
     const history = useHistory()
 
+    // this briefly sends the user to the homescreen upon refresh, for the case that they want to clear history.
+    // if a user clears history, redirecting to the homescreen briefly ensures that history is successfully
+    // cleared in the UI.
     window.onbeforeunload = () => {
         history.push('/')
     }
@@ -97,7 +100,7 @@ const HistoryScreen = (state) => {
             console.log(err)
         }
     }
-    
+
     useEffect(() => {
         loadState()
         saveToLocalStorage(state)
