@@ -76,6 +76,10 @@ const SearchScreen = ({addToHistory}) => {
 
     const history = useHistory()
 
+    window.onbeforeunload = () => {
+        history.push('/')
+    }
+
     return (
         <Wrapper>
             <Title>Search Hacker News</Title>

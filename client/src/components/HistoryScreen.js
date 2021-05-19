@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import { clearHistory, saveToHistory } from '../action/index'
 
 // JSX styles
 
@@ -54,9 +55,51 @@ const Result = styled.h4`
 // Component
 
 const HistoryScreen = (state) => {
-    const data = state.history
+    const [data, setData] = useState([])
+
+    const dispatch = useDispatch()
 
     const history = useHistory()
+
+    window.onbeforeunload = () => {
+        history.push('/')
+    }
+
+    const loadState = () => {
+        try {
+            const serializedState = localStorage.getItem('state');
+            if (serializedState === null) {
+                return undefined
+            }
+            console.log(JSON.parse(serializedState))
+            if (JSON.parse(serializedState).length < state.history.length) {
+                setData(state.history)
+            } else {
+                setData(JSON.parse(serializedState))
+            }
+
+            if (state.history.length < JSON.parse(serializedState).length) {
+                dispatch(saveToHistory(JSON.parse(serializedState)))
+            }
+            return JSON.parse(serializedState)
+        } catch (err) {
+            return undefined
+        }
+    }
+
+      const saveToLocalStorage = (state) => {
+        try {
+            const serializedState = JSON.stringify(state.history)
+            localStorage.setItem('state', serializedState)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        loadState()
+        saveToLocalStorage(state)
+    }, [state])
 
     return (
         <Wrapper>
@@ -71,6 +114,11 @@ const HistoryScreen = (state) => {
                     </ResultCard>
                 )
             }) : <h2 style={{color:'white', fontFamily:'sans-serif'}}>No search results yet</h2>}
+            <BackButton onClick={() => {
+                window.location.reload(false)
+                localStorage.removeItem('state')
+                dispatch(clearHistory())
+            }}>Clear History</BackButton>
         </Wrapper>
     )
 }
@@ -82,4 +130,4 @@ const mapStateToProps = state => {
     return state
 }
 
-export default connect(mapStateToProps)(HistoryScreen)
+export default connect(mapStateToProps, {clearHistory, saveToHistory})(HistoryScreen)
