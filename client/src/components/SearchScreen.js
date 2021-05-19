@@ -71,14 +71,11 @@ const HistoryButton = styled.button`
 // Component
 
 const SearchScreen = ({addToHistory}) => {
+    // slices of state
     const [searchValue, setSearchValue] = useState('')
     const [results, setResults] = useState([])
 
     const history = useHistory()
-
-    window.onbeforeunload = () => {
-        history.push('/')
-    }
 
     return (
         <Wrapper>

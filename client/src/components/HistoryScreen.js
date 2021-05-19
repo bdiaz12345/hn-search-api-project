@@ -65,6 +65,7 @@ const HistoryScreen = (state) => {
         history.push('/')
     }
 
+    // function that loads "state" data from local storage.
     const loadState = () => {
         try {
             const serializedState = localStorage.getItem('state');
@@ -87,7 +88,8 @@ const HistoryScreen = (state) => {
         }
     }
 
-      const saveToLocalStorage = (state) => {
+    // function that saves state data to local storage.
+    const saveToLocalStorage = (state) => {
         try {
             const serializedState = JSON.stringify(state.history)
             localStorage.setItem('state', serializedState)
@@ -95,7 +97,7 @@ const HistoryScreen = (state) => {
             console.log(err)
         }
     }
-
+    
     useEffect(() => {
         loadState()
         saveToLocalStorage(state)
